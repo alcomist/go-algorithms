@@ -1,6 +1,10 @@
 # Algorithms in GO
 This repo shows my implementations in Go with the code style strictly follows the [Google Golang Style Guide]
 
+<p align='center'>
+<img src='./logo.jpg'>
+</p>
+
 ## Sort
 
 | No.  | Title       | Code                                                       |
