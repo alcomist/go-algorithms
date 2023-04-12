@@ -5,9 +5,9 @@ This repo shows my implementations in Go with the code style strictly follows th
 
 ## Sort
 
-| No.  | Title            | Code                                                                        |
-|:----:|:-----------------|:----------------------------------------------------------------------------|
-| 0001 | Merge Sort       | [Go](go-algorithms/tree/master/sort/merge.go)                               |
-| 0002 | Quick Sort       | [Go](sort/quick.go)                                                         |
-| 0003 | Selection Sort   | [Go](https://github.com/alcomist/go-algorithms/blob/main/sort/selection.go) |
-| 0004 | Insertion Sort   | [Go](https://github.com/alcomist/go-algorithms/blob/main/sort/insertion.go) |
+| No.  | Title            | Code                    |
+|:----:|:-----------------|:------------------------|
+| 0001 | Merge Sort       | [Go](sort/merge.go)     |
+| 0002 | Quick Sort       | [Go](sort/quick.go)     |
+| 0003 | Selection Sort   | [Go](sort/selection.go) |
+| 0004 | Insertion Sort   | [Go](sort/insertion.go) |
