@@ -1,5 +1,9 @@
 package sort
 
-func QuickSort(data Sorter, a, b int) {
+func quick(data Sorter) {
 
+}
+
+func Quick(data Sorter) {
+	quick(data)
 }

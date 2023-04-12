@@ -20,7 +20,7 @@ func mergeSort(data Sorter, s, e int) {
 	merge(data, s, e)
 }
 
-func MergeSort(data Sorter) {
+func Merge(data Sorter) {
 
 	mergeSort(data, 0, data.Len()-1)
 }
