@@ -43,14 +43,14 @@ func IntSlice(size int) []int {
 	return a
 }
 
-func RandomRange(i, j int) (int, int) {
+func RandomRange(i int) (int, int) {
 
 	rand.Seed(time.Now().UnixNano())
 
-	s, e := j, j
-	for s != e {
-		s += rand.Intn(j - i)
-		e += rand.Intn(j - i)
+	s, e := i, i
+	for s == e {
+		s = rand.Intn(i)
+		e = rand.Intn(i)
 	}
 
 	if s > e {

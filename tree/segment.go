@@ -1,33 +1,58 @@
 package tree
 
-type Segment struct {
-	d []int
-	t map[int]int
-}
-
-func rootIndex() int {
-	//return 1
-	return 0
-}
-
-func leftChildIndex(i int) int {
-	//return i*2
-	return i*2 + 1
-}
-
-func rightChildIndex(i int) int {
-	//return i*2 + 1
-	return i*2 + 2
-}
-
-func parentIndex(i int) int {
-	//return i / 2
-	return (i - 1) / 2
+type Indexer interface {
+	root() int
+	left(i int) int
+	right(i int) int
+	parent(i int) int
 }
 
 func midIndex(i, j int) int {
-	//return (i + j) / 2
 	return i + (j-i)/2
+}
+
+type RootZeroIndexer struct {
+}
+
+func (r *RootZeroIndexer) root() int {
+	return 0
+}
+
+func (r *RootZeroIndexer) left(i int) int {
+	return i*2 + 1
+}
+
+func (r *RootZeroIndexer) right(i int) int {
+	return i*2 + 2
+}
+
+func (r *RootZeroIndexer) parent(i int) int {
+	return (i - 1) / 2
+}
+
+type RootOneIndexer struct {
+}
+
+func (r *RootOneIndexer) root() int {
+	return 1
+}
+
+func (r *RootOneIndexer) left(i int) int {
+	return i * 2
+}
+
+func (r *RootOneIndexer) right(i int) int {
+	return i*2 + 1
+}
+
+func (r *RootOneIndexer) parent(i int) int {
+	return i / 2
+}
+
+type Segment struct {
+	d       []int
+	t       map[int]int
+	indexer Indexer
 }
 
 func NewSegmentTree(d []int) *Segment {
@@ -35,8 +60,10 @@ func NewSegmentTree(d []int) *Segment {
 	seg := &Segment{}
 	seg.d = d
 	seg.t = make(map[int]int)
+	//seg.indexer = &RootOneIndexer{}
+	seg.indexer = &RootZeroIndexer{}
 
-	seg.init(0, len(d)-1, rootIndex())
+	seg.init(0, len(d)-1, seg.indexer.root())
 	return seg
 }
 
@@ -49,7 +76,7 @@ func (s *Segment) init(start, end, node int) int {
 
 		mid := midIndex(start, end)
 		s.t[node] =
-			s.init(start, mid, leftChildIndex(node)) + s.init(mid+1, end, rightChildIndex(node))
+			s.init(start, mid, s.indexer.left(node)) + s.init(mid+1, end, s.indexer.right(node))
 		return s.t[node]
 	}
 }
@@ -67,11 +94,11 @@ func (s *Segment) sum(start, end, node, left, right int) int {
 	} else {
 
 		mid := midIndex(start, end)
-		return s.sum(start, mid, leftChildIndex(node), left, right) + s.sum(mid+1, end, rightChildIndex(node), left, right)
+		return s.sum(start, mid, s.indexer.left(node), left, right) + s.sum(mid+1, end, s.indexer.right(node), left, right)
 	}
 }
 
 func (s *Segment) Sum(left, right int) int {
 
-	return s.sum(0, len(s.d)-1, rootIndex(), left, right)
+	return s.sum(0, len(s.d)-1, s.indexer.root(), left, right)
 }

@@ -30,13 +30,13 @@ func TestSegmentTree(t *testing.T) {
 
 		tree := NewSegmentTree(a)
 
-		s, e := provider.RandomRange(0, size-1)
+		s, e := provider.RandomRange(size - 1)
 
 		s1 := tree.Sum(s, e)
 		s2 := sum(a, s, e)
 
 		if s1 != s2 {
-			t.Errorf("segment tree sum error (tree sum=>%d, sum=>%d)\n", s1, s2)
+			t.Errorf("[%d:%d] segment tree sum error (tree sum=>%d, sum=>%d)\n", s, e, s1, s2)
 		}
 	}
 
