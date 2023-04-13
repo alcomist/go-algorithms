@@ -1,14 +1,11 @@
 package tree
 
+// Indexer : indexer strategy interface with common methods
 type Indexer interface {
 	root() int
 	left(i int) int
 	right(i int) int
 	parent(i int) int
-}
-
-func midIndex(i, j int) int {
-	return i + (j-i)/2
 }
 
 type RootZeroIndexer struct {
@@ -49,6 +46,10 @@ func (r *RootOneIndexer) parent(i int) int {
 	return i / 2
 }
 
+func midIndex(i, j int) int {
+	return i + (j-i)/2
+}
+
 type Segment struct {
 	d       []int
 	t       map[int]int
@@ -59,7 +60,10 @@ func NewSegmentTree(d []int) *Segment {
 
 	seg := &Segment{}
 	seg.d = d
+
+	// use map for reducing extra spaces
 	seg.t = make(map[int]int)
+
 	//seg.indexer = &RootOneIndexer{}
 	seg.indexer = &RootZeroIndexer{}
 

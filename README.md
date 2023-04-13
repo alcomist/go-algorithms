@@ -3,6 +3,14 @@ This repo shows my implementations in Go with the code style strictly follows th
 
 [Google Golang Style Guide]: https://google.github.io/styleguide/go/
 
+## Coding Test
+
+run go program and file as stdin by command line
+
+```shell
+cmd /c 'go run .\acmicpc_2252.go < acmicpc_2252.txt'
+```
+
 ## Search
 
 | No.  | Title          | Code                    |
