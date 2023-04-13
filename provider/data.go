@@ -32,6 +32,7 @@ func RandomUniqueIntSlice(size int) []int {
 	return a
 }
 
+// IntSlice : return int slice [0, size)
 func IntSlice(size int) []int {
 
 	a := make([]int, 0, size)
@@ -40,6 +41,23 @@ func IntSlice(size int) []int {
 	}
 
 	return a
+}
+
+func RandomRange(i, j int) (int, int) {
+
+	rand.Seed(time.Now().UnixNano())
+
+	s, e := j, j
+	for s != e {
+		s += rand.Intn(j - i)
+		e += rand.Intn(j - i)
+	}
+
+	if s > e {
+		s, e = e, s
+	}
+
+	return s, e
 }
 
 func IntSliceToString(a []int) string {

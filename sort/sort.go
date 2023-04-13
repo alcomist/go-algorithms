@@ -8,6 +8,7 @@ type Sorter interface {
 
 type IntSlice []int
 
-func (x IntSlice) Len() int           { return len(x) }
-func (x IntSlice) Less(i, j int) bool { return x[i] < x[j] }
-func (x IntSlice) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
+func (x IntSlice) Len() int                  { return len(x) }
+func (x IntSlice) Less(i, j int) bool        { return x[i] < x[j] }
+func (x IntSlice) Swap(i, j int)             { x[i], x[j] = x[j], x[i] }
+func (x IntSlice) Equal(key any, j int) bool { return key.(int) == x[j] }

@@ -8,12 +8,12 @@ func binary(data Searcher, x any) int {
 	for lo <= hi {
 		mid := lo + (hi-lo)/2
 
-		if data.Less(x, mid) {
-			hi = mid - 1
-		} else if data.Greater(x, mid) {
-			lo = mid + 1
-		} else {
+		if data.Equal(x, mid) {
 			return mid
+		} else if data.Less(x, mid) {
+			hi = mid - 1
+		} else {
+			lo = mid + 1
 		}
 	}
 
