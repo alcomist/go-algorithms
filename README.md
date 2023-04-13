@@ -11,33 +11,11 @@ run go program and file as stdin by command line
 cmd /c 'go run .\acmicpc_2252.go < acmicpc_2252.txt'
 ```
 
-## Search
+## Algorithms
 
-| No.  | Title          | Code                    |
-|:----:|:---------------|:------------------------|
-| 0001 | Binary Search  | [Go](search/binary.go)  |
-
-
-## Sort
-
-| No.  | Title            | Code                    |
-|:----:|:-----------------|:------------------------|
-| 0001 | Merge Sort       | [Go](sort/merge.go)     |
-| 0002 | Quick Sort       | [Go](sort/quick.go)     |
-| 0003 | Selection Sort   | [Go](sort/selection.go) |
-| 0004 | Insertion Sort   | [Go](sort/insertion.go) |
-
-
-## Tree
-
-| No.  | Title          | Code                    |
-|:----:|:---------------|:------------------------|
-| 0001 | Segment Tree   | [Go](tree/segment.go)   |
-
-
-## Graph
-
-| No.  | Title        | Code                       |
-|:----:|:-------------|:---------------------------|
-| 0001 | Union Find   | [Go](graph/union_find.go)  |
-
+| No.  | Title  | Code         |
+|:----:|:-------|:-------------|
+| 0001 | Sort   | [Go](sort)   |
+| 0002 | Search | [Go](search) |
+| 0003 | Tree   | [Go](tree)   |
+| 0004 | Graph  | [Go](graph)  |
