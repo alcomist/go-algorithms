@@ -15,7 +15,7 @@ func NewFenwickTree(ds []int) *Fenwick {
 	return fen
 }
 
-func (f *Fenwick) add(i, v, n int) {
+func (f *Fenwick) delta(i, v, n int) {
 
 	for i <= n {
 		f.t[i] += v
@@ -26,7 +26,7 @@ func (f *Fenwick) add(i, v, n int) {
 func (f *Fenwick) init(ds []int) {
 
 	for i, d := range ds {
-		f.add(i+1, d, len(ds))
+		f.delta(i+1, d, len(ds))
 	}
 }
 
