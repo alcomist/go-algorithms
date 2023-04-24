@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestSegmentTree(t *testing.T) {
+func TestNewFenwickTree(t *testing.T) {
 
 	//rand.Seed(time.Now().UnixNano())
 
@@ -14,9 +14,9 @@ func TestSegmentTree(t *testing.T) {
 
 	a := provider.IntSlice(size)
 
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < size; i++ {
 
-		tree := NewSegmentTree(a)
+		tree := NewFenwickTree(a)
 
 		s, e := provider.RandomRange(size - 1)
 
@@ -24,7 +24,7 @@ func TestSegmentTree(t *testing.T) {
 		s2 := util.IntSum(a, s, e)
 
 		if s1 != s2 {
-			t.Errorf("[%d:%d] segment tree sum error (tree sum=>%d, sum=>%d)\n", s, e, s1, s2)
+			t.Errorf("[%d:%d] fenwick tree sum error (tree sum=>%d, sum=>%d)\n", s, e, s1, s2)
 		}
 	}
 }

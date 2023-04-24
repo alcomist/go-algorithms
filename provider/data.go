@@ -45,7 +45,7 @@ func IntSlice(size int) []int {
 
 func RandomRange(i int) (int, int) {
 
-	rand.Seed(time.Now().UnixNano())
+	//rand.Seed(time.Now().UnixNano())
 
 	s, e := i, i
 	for s == e {
