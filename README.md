@@ -5,7 +5,7 @@ This repo shows my implementations in Go with the code style strictly follows th
 
 ## Coding Test
 
-run go program and file as stdin by command line
+run go program and file as stdin by command line in Windows OS
 
 ```shell
 cmd /c 'go run .\acmicpc_2252.go < acmicpc_2252.txt'
