@@ -12,10 +12,14 @@
 
 참고 블로그 : https://yabmoons.tistory.com/438
 
+## 1.3 Heap
+
+(힙 : 우선순위 큐)
+
 ### 소스코드
 
-| No.  | Title          | Code              |
-|:----:|:---------------|:------------------|
-| 0001 | Segment Tree   | [Go](segment.go)  |
-| 0002 | Fenwick Tree   | [Go](fenwick.go)  |
-
+| No.  | Title        | Code             |
+|:----:|:-------------|:-----------------|
+| 0001 | Segment Tree | [Go](segment.go) |
+| 0002 | Fenwick Tree | [Go](fenwick.go) |
+| 0003 | Heap         | [Go](heap.go)    |
