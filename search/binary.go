@@ -1,6 +1,8 @@
 package search
 
-func binary(data Searcher, x any) int {
+import "github.com/alcomist/go-algorithms/typedef"
+
+func binary(data typedef.Searcher, x any) int {
 
 	lo := 0
 	hi := data.Len() - 1
@@ -20,6 +22,6 @@ func binary(data Searcher, x any) int {
 	return -1
 }
 
-func Binary(data Searcher, x any) int {
+func Binary(data typedef.Searcher, x any) int {
 	return binary(data, x)
 }

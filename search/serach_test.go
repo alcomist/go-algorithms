@@ -8,6 +8,12 @@ import (
 	"time"
 )
 
+type IntSlice []int
+
+func (x IntSlice) Len() int                  { return len(x) }
+func (x IntSlice) Less(key any, i int) bool  { return key.(int) < x[i] }
+func (x IntSlice) Equal(key any, i int) bool { return key.(int) == x[i] }
+
 func TestBinarySearch(t *testing.T) {
 
 	rand.Seed(time.Now().UnixNano())

@@ -1,12 +1,14 @@
 package sort
 
-func merge(data Sorter, s, e int) {
+import "github.com/alcomist/go-algorithms/typedef"
+
+func merge(data typedef.Sorter, s, e int) {
 	//fmt.Println(data[0])
 	//fmt.Println(s, e)
 }
 
 // mergeSort range is inclusive (s <= index <= e)
-func mergeSort(data Sorter, s, e int) {
+func mergeSort(data typedef.Sorter, s, e int) {
 
 	// if s >= e mean slice length is 0
 	if s >= e {
@@ -20,7 +22,7 @@ func mergeSort(data Sorter, s, e int) {
 	merge(data, s, e)
 }
 
-func Merge(data Sorter) {
+func Merge(data typedef.Sorter) {
 
 	mergeSort(data, 0, data.Len()-1)
 }

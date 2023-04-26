@@ -1,6 +1,8 @@
 package sort
 
-func insertion(data Sorter) {
+import "github.com/alcomist/go-algorithms/typedef"
+
+func insertion(data typedef.Sorter) {
 
 	n := data.Len()
 	for i := 1; i < n; i++ {
@@ -10,6 +12,6 @@ func insertion(data Sorter) {
 	}
 }
 
-func Insertion(data Sorter) {
+func Insertion(data typedef.Sorter) {
 	insertion(data)
 }

@@ -1,9 +1,11 @@
 package sort
 
-func quick(data Sorter) {
+import "github.com/alcomist/go-algorithms/typedef"
+
+func quick(data typedef.Sorter) {
 
 }
 
-func Quick(data Sorter) {
+func Quick(data typedef.Sorter) {
 	quick(data)
 }

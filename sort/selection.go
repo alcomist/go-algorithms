@@ -1,6 +1,8 @@
 package sort
 
-func selection(data Sorter) {
+import "github.com/alcomist/go-algorithms/typedef"
+
+func selection(data typedef.Sorter) {
 
 	n := data.Len()
 	for i := 0; i < n; i++ {
@@ -16,6 +18,6 @@ func selection(data Sorter) {
 	}
 }
 
-func Selection(data Sorter) {
+func Selection(data typedef.Sorter) {
 	selection(data)
 }
