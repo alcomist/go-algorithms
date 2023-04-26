@@ -9,8 +9,7 @@ type IntHeap struct {
 
 func NewIntHeap() *IntHeap {
 
-	h := &IntHeap{d: make([]int, 0), indexer: &index.RootZeroIndexer{}}
-	return h
+	return &IntHeap{d: make([]int, 0), indexer: &index.RootZeroIndexer{}}
 }
 
 func (h *IntHeap) Len() int {
@@ -35,16 +34,16 @@ func (h *IntHeap) up() {
 
 func (h *IntHeap) Push(x int) {
 
+	// add x to tail of h.d
 	h.d = append(h.d, x)
 
-	// add x to tail of h.d
 	// then up heap
 	h.up()
 }
 
 func (h *IntHeap) down() {
 
-	i := rootIndex()
+	i := h.indexer.Root()
 	for {
 
 		j1 := h.indexer.Left(i)
