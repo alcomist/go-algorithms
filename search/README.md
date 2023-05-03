@@ -1,4 +1,4 @@
-# Search algorithms
+# 2. Search algorithms
 
 | No.  | Title          | Code                   |
 |:----:|:---------------|:-----------------------|

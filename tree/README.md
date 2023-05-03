@@ -1,18 +1,18 @@
-# 2. Tree algorithms
+# 3. Tree algorithms
 
-## 2.1 Segment Tree
+## 3.1 Segment Tree
 
 (세그먼트 트리)
 
 참고 블로그 : https://m.blog.naver.com/ndb796/221282210534
 
-## 2.2 Fenwick Tree
+## 3.2 Fenwick Tree
 
 (펜윅트리 : Binary Indexed Tree)
 
 참고 블로그 : https://yabmoons.tistory.com/438
 
-## 2.3 Heap
+## 3.3 Heap
 
 (힙 : 우선순위 큐)
 
