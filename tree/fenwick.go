@@ -4,45 +4,40 @@ type Fenwick struct {
 	t []int
 }
 
-func NewFenwickTree(ds []int) *Fenwick {
+func NewFenwickTree(ns []int) *Fenwick {
 
-	fen := &Fenwick{}
+	f := &Fenwick{}
 
-	// make +1 space for 1 based index
-	fen.t = make([]int, len(ds)+1)
-	fen.init(ds)
+	f.t = make([]int, len(ns)+1)
 
-	return fen
+	for i, n := range ns {
+		f.delta(i+1, n)
+	}
+
+	return f
 }
 
-func (f *Fenwick) delta(i, v, n int) {
+func (f *Fenwick) delta(i, n int) {
 
-	for i <= n {
-		f.t[i] += v
+	for i < len(f.t) {
+		f.t[i] += n
 		i = i + (i & -i)
 	}
 }
 
-func (f *Fenwick) init(ds []int) {
+// Sum = sum(hi+1) - sum(lo)
+func (f *Fenwick) Sum(lo, hi int) int {
 
-	for i, d := range ds {
-		f.delta(i+1, d, len(ds))
-	}
+	return f.sum(hi+1) - f.sum(lo)
 }
 
 func (f *Fenwick) sum(i int) int {
 
-	ret := 0
-
+	r := 0
 	for i > 0 {
-		ret += f.t[i]
+		r += f.t[i]
 		i = i - (i & -i)
 	}
 
-	return ret
-}
-
-func (f *Fenwick) Sum(start, end int) int {
-
-	return f.sum(end+1) - f.sum(start)
+	return r
 }
