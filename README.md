@@ -13,9 +13,10 @@ cmd /c 'go run .\acmicpc_2252.go < acmicpc_2252.txt'
 
 ## Algorithms
 
-| No.  | Title  | Code         |
-|:----:|:-------|:-------------|
-| 0001 | Sort   | [Go](sort)   |
-| 0002 | Search | [Go](search) |
-| 0003 | Tree   | [Go](tree)   |
-| 0004 | Graph  | [Go](graph)  |
+| No.  | Title       | Code              |
+|:----:|:------------|:------------------|
+| 0001 | Sort        | [Go](sort)        |
+| 0002 | Search      | [Go](search)      |
+| 0003 | Tree        | [Go](tree)        |
+| 0004 | Graph       | [Go](graph)       |
+| 0005 | Backtrack   | [Go](backtrack)   |

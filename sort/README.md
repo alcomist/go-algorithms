@@ -1,4 +1,4 @@
-# Sort algorithms
+# 1.1 Sort algorithms
 
 | No.  | Title            | Code                  |
 |:----:|:-----------------|:----------------------|
