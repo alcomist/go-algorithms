@@ -1,4 +1,4 @@
-package string
+package boyer_moore
 
 type BoyerMoore struct {
 }

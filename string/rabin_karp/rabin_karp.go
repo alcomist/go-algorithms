@@ -1,4 +1,4 @@
-package string
+package rabin_karp
 
 import (
 	"math"
@@ -9,9 +9,6 @@ const (
 	base = 2
 	mod  = 1000000007
 )
-
-type RabinKarp struct {
-}
 
 func hash(r rune, x, y int) int {
 	return int(r) * int(math.Pow(float64(x), float64(y))) % mod
@@ -30,13 +27,7 @@ func CalculateHash(rs []rune) int {
 	return h
 }
 
-func NewRK() *RabinKarp {
-
-	r := &RabinKarp{}
-	return r
-}
-
-func (r *RabinKarp) Search(p, s string) []int {
+func Search(p, s string) []int {
 
 	pos := make([]int, 0)
 

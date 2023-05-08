@@ -1,13 +1,14 @@
 package string
 
 import (
+	"github.com/alcomist/go-algorithms/string/kmp"
+	"github.com/alcomist/go-algorithms/string/rabin_karp"
 	"reflect"
 	"testing"
 )
 
 func TestKmp(t *testing.T) {
 
-	k := NewKmp()
 	haystack := "aabaabacbba"
 
 	var tests = []struct {
@@ -18,7 +19,7 @@ func TestKmp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := k.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := kmp.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("kmp.Search(%q, %q) = %v (WANT:%v)", test.needle, haystack, got, test.want)
 		}
 	}
@@ -35,7 +36,7 @@ func TestKmp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := k.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := kmp.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("kmp.Search(%q, %q) = %v (WANT:%v)", test.needle, haystack, got, test.want)
 		}
 	}
@@ -52,7 +53,7 @@ func TestKmp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := k.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := kmp.Search(test.needle, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("kmp.Search(%q, %q) = %v (WANT:%v)", test.needle, haystack, got, test.want)
 		}
 	}
@@ -60,8 +61,6 @@ func TestKmp(t *testing.T) {
 
 func TestRabinKarp(t *testing.T) {
 
-	r := NewRK()
-
 	haystack := "aabaabacbba"
 
 	var tests = []struct {
@@ -72,7 +71,7 @@ func TestRabinKarp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := r.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := rabin_karp.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("rabin_karp.Search(%q, %q) = %v (WANT:%v)", test.input, haystack, got, test.want)
 		}
 	}
@@ -89,7 +88,7 @@ func TestRabinKarp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := r.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := rabin_karp.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("rabin_karp.Search(%q, %q) = %v (WANT:%v)", test.input, haystack, got, test.want)
 		}
 	}
@@ -106,7 +105,7 @@ func TestRabinKarp(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got := r.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
+		if got := rabin_karp.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("rabin_karp.Search(%q, %q) = %v (WANT:%v)", test.input, haystack, got, test.want)
 		}
 	}
