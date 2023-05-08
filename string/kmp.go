@@ -1,21 +1,22 @@
 package string
 
 type Kmp struct {
-	pi []int
-	s  string
 }
 
-func build(s string) []int {
+func BuildKmpTable(rs []rune) []int {
 
-	m := len(s)
-	pi := make([]int, m)
+	n := len(rs)
+
+	pi := make([]int, n)
 
 	j := 0
-	for i := 1; i < m; i++ {
-		for j > 0 && s[i] != s[j] {
+	for i := 1; i < n; i++ {
+
+		for j > 0 && rs[i] != rs[j] {
 			j = pi[j-1]
 		}
-		if s[i] == s[j] {
+
+		if rs[i] == rs[j] {
 			j++
 			pi[i] = j
 		}
@@ -24,22 +25,35 @@ func build(s string) []int {
 	return pi
 }
 
-func (k *Kmp) Search(p string) []int {
+func NewKmp() *Kmp {
 
+	k := &Kmp{}
+	return k
+}
+
+func (k *Kmp) Search(p, s string) []int {
+
+	pr := []rune(p)
+	pi := BuildKmpTable(pr)
+
+	sr := []rune(s)
 	pos := make([]int, 0)
 
-	n := len(k.s)
-	m := len(p)
+	m := len(pr)
+	n := len(sr)
+
 	j := 0
 
 	for i := 0; i < n; i++ {
-		for j > 0 && k.s[i] != p[j] {
-			j = k.pi[j-1]
+
+		for j > 0 && sr[i] != pr[j] {
+			j = pi[j-1]
 		}
-		if k.s[i] == p[j] {
+
+		if sr[i] == pr[j] {
 			if j == m-1 {
 				pos = append(pos, i-m+1)
-				j = k.pi[j]
+				j = pi[j]
 			} else {
 				j++
 			}
@@ -47,12 +61,4 @@ func (k *Kmp) Search(p string) []int {
 	}
 
 	return pos
-}
-
-func NewKmp(s string) *Kmp {
-
-	k := &Kmp{}
-	k.s = s
-	k.pi = build(s)
-	return k
 }
