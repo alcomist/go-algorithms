@@ -6,9 +6,9 @@
 
 ### 소스코드
 
-| No.  | Title                         | Code                                |
-|:----:|:------------------------------|:------------------------------------|
-| 0001 | Generate Parentheses          | [Go](generate_parentheses.go)       |
+| No. | Title                         | Code                                |
+|:---:|:------------------------------|:------------------------------------|
+| 001 | Generate Parentheses          | [Go](generate_parentheses.go)       |
 
 ### LeetCode Problems
 
