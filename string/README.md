@@ -18,8 +18,8 @@
 
 ### 소스코드
 
-| No.  | Title        | Code             |
-|:----:|:-------------|:-----------------|
-| 0001 | Segment Tree | [Go](segment.go) |
-| 0002 | Fenwick Tree | [Go](fenwick.go) |
-| 0003 | Heap         | [Go](heap.go)    |
+| No. | Title       | Code                 |
+|:---:|:------------|:---------------------|
+| 001 | KMP         | [Go](kmp.go)         |
+| 002 | Boyer-Moore | [Go](boyer_moore.go) |
+| 003 | Rabin-Karp  | [Go](rabin_karp.go)  |
