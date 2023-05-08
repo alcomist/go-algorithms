@@ -18,8 +18,8 @@
 
 ### 소스코드
 
-| No. | Title       | Code                 |
-|:---:|:------------|:---------------------|
-| 001 | KMP         | [Go](kmp.go)         |
-| 002 | Boyer-Moore | [Go](boyer_moore.go) |
-| 003 | Rabin-Karp  | [Go](rabin_karp.go)  |
+| No. | Title       | Code                             |
+|:---:|:------------|:---------------------------------|
+| 001 | KMP         | [Go](kmp/kmp.go)                 |
+| 002 | Boyer-Moore | [Go](boyer_moore/boyer_moore.go) |
+| 003 | Rabin-Karp  | [Go](rabin_karp/rabin_karp.go)   |

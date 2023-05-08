@@ -1,9 +1,6 @@
-package string
+package kmp
 
-type Kmp struct {
-}
-
-func BuildKmpTable(rs []rune) []int {
+func BuildTable(rs []rune) []int {
 
 	n := len(rs)
 
@@ -25,16 +22,10 @@ func BuildKmpTable(rs []rune) []int {
 	return pi
 }
 
-func NewKmp() *Kmp {
-
-	k := &Kmp{}
-	return k
-}
-
-func (k *Kmp) Search(p, s string) []int {
+func Search(p, s string) []int {
 
 	pr := []rune(p)
-	pi := BuildKmpTable(pr)
+	pi := BuildTable(pr)
 
 	sr := []rune(s)
 	pos := make([]int, 0)
