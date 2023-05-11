@@ -1,6 +1,8 @@
 package string
 
 import (
+	"github.com/alcomist/go-algorithms/string/distance"
+	"github.com/alcomist/go-algorithms/string/interleaving"
 	"github.com/alcomist/go-algorithms/string/kmp"
 	"github.com/alcomist/go-algorithms/string/rabin_karp"
 	"reflect"
@@ -107,6 +109,45 @@ func TestRabinKarp(t *testing.T) {
 	for _, test := range tests {
 		if got := rabin_karp.Search(test.input, haystack); !reflect.DeepEqual(got, test.want) {
 			t.Errorf("rabin_karp.Search(%q, %q) = %v (WANT:%v)", test.input, haystack, got, test.want)
+		}
+	}
+}
+
+func TestDistance(t *testing.T) {
+
+	var tests = []struct {
+		s1, s2 string
+		want   int
+	}{
+		{"sunday", "saturday", 3},
+		{"", "", 0},
+		{"cat", "car", 1},
+		{"abc", "ab", 1},
+	}
+
+	for _, test := range tests {
+		if got := distance.Distance(test.s1, test.s2); got != test.want {
+			t.Errorf("distance.Distance(%q, %q) = %v (WANT:%v)", test.s1, test.s2, got, test.want)
+		}
+	}
+}
+
+func TestInterleaving(t *testing.T) {
+
+	var tests = []struct {
+		a, b, c string
+		want    bool
+	}{
+		{"xyz", "abcd", "xabyczd", true},
+		{"bcc", "bbca", "bbcbcac", true},
+		{"cat", "tree", "tcraete", true},
+		{"cat", "tree", "catrtee", true},
+		{"cat", "tree", "cttaree", false},
+	}
+
+	for _, test := range tests {
+		if got := interleaving.Interleaving(test.a, test.b, test.c); got != test.want {
+			t.Errorf("interleaving.Interleaving(%q, %q, %q) = %v (WANT:%v)", test.a, test.b, test.c, got, test.want)
 		}
 	}
 }

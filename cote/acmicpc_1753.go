@@ -2,41 +2,32 @@ package main
 
 import (
 	"bufio"
-	"container/heap"
 	"fmt"
+	"github.com/alcomist/go-algorithms/tree"
 	"os"
 	"strconv"
 )
 
 // Node : is something we manage in a priority queue.
 type node struct {
-	v int
-	w int
+	next   int
+	weight int
 }
 
-// A PQ implements heap.Interface and holds Items.
-type PQ []*node
+type Nodes []*node
 
-func (pq PQ) Len() int { return len(pq) }
-
-func (pq PQ) Less(i, j int) bool {
-	// We want Pop to give us the highest, not lowest, priority so we use greater than here.
-	return pq[i].w < pq[j].w
+func (ns *Nodes) Len() int           { return len(*ns) }
+func (ns *Nodes) Less(i, j int) bool { return (*ns)[i].weight < (*ns)[j].weight }
+func (ns *Nodes) Swap(i, j int)      { (*ns)[i], (*ns)[j] = (*ns)[j], (*ns)[i] }
+func (ns *Nodes) Push(x any) {
+	*ns = append(*ns, x.(*node))
 }
 
-func (pq PQ) Swap(i, j int) {
-	pq[i], pq[j] = pq[j], pq[i]
-}
-
-func (pq *PQ) Push(x any) {
-	*pq = append(*pq, x.(*node))
-}
-
-func (pq *PQ) Pop() any {
-	old := *pq
+func (ns *Nodes) Pop() any {
+	old := *ns
 	n := len(old)
 	item := old[n-1]
-	*pq = old[0 : n-1]
+	*ns = old[0 : n-1]
 	return item
 }
 
@@ -47,48 +38,61 @@ func main() {
 	r, w := bufio.NewReader(os.Stdin), bufio.NewWriter(os.Stdout)
 	defer w.Flush()
 
-	var n, m, s int
+	// vertex, edge, start
+	var v, e, s int
 
-	fmt.Fscan(r, &n, &m)
+	fmt.Fscan(r, &v, &e)
 	fmt.Fscan(r, &s)
-	//fmt.Println(vertex, edge, start)
 
-	adj := make([][]node, n+1)
+	graph := make([][]node, v+1)
 
-	for i := 0; i < m; i++ {
+	for i := 0; i < e; i++ {
 
-		var u, v, w int
-		fmt.Fscan(r, &u, &v, &w)
+		var current, next, weight int
+		fmt.Fscan(r, &current, &next, &weight)
 
-		adj[u] = append(adj[u], node{v: v, w: w})
+		graph[current] = append(graph[current], node{next: next, weight: weight})
 	}
 
-	pq := PQ{}
-	visited := make([]int, n+1)
+	nodes := Nodes{}
+	h := tree.NewHeap(&nodes)
 
-	heap.Push(&pq, &node{s, 1})
-	visited[s] = 1
+	weights := make([]int, v+1)
+	for i, _ := range weights {
+		weights[i] = INF
+	}
 
-	for pq.Len() > 0 {
-		here := heap.Pop(&pq).(*node)
+	weights[s] = 0
 
-		if visited[here.v] < here.w {
+	h.Push(&node{s, 0})
+
+	for h.Len() > 0 {
+
+		cur := h.Pop().(*node)
+
+		current := cur.next
+		weight := cur.weight
+
+		if weights[current] < weight {
 			continue
 		}
 
-		for _, next := range adj[here.v] {
-			if visited[next.v] == 0 || visited[next.v] > visited[here.v]+next.w {
-				visited[next.v] = visited[here.v] + next.w
-				heap.Push(&pq, &node{next.v, visited[next.v]})
+		for _, item := range graph[current] {
+
+			nextWeight := weight + item.weight
+
+			if nextWeight < weights[item.next] {
+				weights[item.next] = nextWeight
+				h.Push(&node{item.next, nextWeight})
 			}
 		}
 	}
 
-	for i := 1; i <= n; i++ {
-		if visited[i] == 0 {
+	for _, weight := range weights[1:] {
+		if weight == INF {
 			w.WriteString("INF")
 		} else {
-			w.WriteString(strconv.Itoa(visited[i] - 1))
+			w.WriteString(strconv.Itoa(weight))
 		}
 		w.WriteByte('\n')
 	}
